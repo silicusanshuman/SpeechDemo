@@ -24,26 +24,32 @@ class ViewController: UIViewController {
     
     let speechSynthesizer = AVSpeechSynthesizer();
     
-    var rate: Float!
-    var pitch: Float!
-    var volume: Float!
-    
-    
-    func registerDefaultSettings()  {
-        
-        rate = AVSpeechUtteranceDefaultSpeechRate
-        pitch = 1.0
-        volume = 1.0
-        
-        let defaultSpeechSettings: Dictionary <NSObject, AnyObject> = ["rate":rate, "pitch":pitch, "volume":volume]
-        NSUserDefaults.standardUserDefaults().registerDefaults(defaultSpeechSettings)
-    }
-    
-    func loadSettings() -> Bool {
-        
-        let userDefaults = NSUserDefaults.standardUserDefaults() as NSUserDefaults
-        if let theRate:
-    }
+//    var rate: Float!
+//    var pitch: Float!
+//    var volume: Float!
+//    
+//    
+//    func registerDefaultSettings()  {
+//        
+//        rate = AVSpeechUtteranceDefaultSpeechRate
+//        pitch = 1.0
+//        volume = 1.0
+//        
+//        let defaultSpeechSettings: Dictionary <NSObject, AnyObject> = ["rate":rate, "pitch":pitch, "volume":volume]
+//        NSUserDefaults.standardUserDefaults().registerDefaults(defaultSpeechSettings)
+//    }
+//    
+//    func loadSettings() -> Bool {
+//        
+//        let userDefaults = NSUserDefaults.standardUserDefaults() as NSUserDefaults
+//        if let theRate: Float = userDefaults.valueForKey("rate") as? Float {
+//            rate = theRate
+//            pitch = userDefaults.valueForKey("pitch") as! Float
+//            volume = userDefaults.valueForKey("volume") as! Float
+//     
+//            return true
+//        }
+//    }
     
     
     override func viewDidLoad() {
@@ -90,9 +96,9 @@ class ViewController: UIViewController {
         
         let speachUtterence = AVSpeechUtterance(string: tvEditor.text)
         
-        speachUtterence.rate = rate
-        speachUtterence.pitchMultiplier = pitch
-        speachUtterence.volume = volume
+        speachUtterence.rate = AVSpeechUtteranceDefaultSpeechRate //rate
+        speachUtterence.pitchMultiplier = 1.0 //pitch
+        speachUtterence.volume = 1.0 //volume
         
         speechSynthesizer.speakUtterance(speachUtterence)
     }
